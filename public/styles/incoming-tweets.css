@@ -70,6 +70,10 @@
   border: 4px solid rgb(100, 100, 100);
 }
 
+.tweet-container:hover {
+  box-shadow: 10px 10px grey;
+}
+
 p.name {
   padding-left: 15px; 
 }

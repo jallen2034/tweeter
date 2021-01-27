@@ -24,6 +24,7 @@ button {
 }
 
 .new-tweet {
+  margin-top: 15px;
   padding: 1.5rem;
   width: 100%
 }

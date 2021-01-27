@@ -1,7 +1,6 @@
 $(document).ready(function() {
   // --- our code goes here ---
-  console.log("hello");
-
+ 
   /* jquery selector that will target the #tweet-text field the user inputs their text and on each keypress, it adds 1 to a counter and console logs that out
      if the counter number goes negative, then update the counter style to change to red 
      otherwise if the counter goes into positives, change colour back to black

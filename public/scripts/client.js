@@ -1,6 +1,6 @@
 /* Client-side JS logic goes here
-   jQuery is already loaded
-   Reminder: Use (and do all your DOM work in) jQuery's document ready function */
+ * jQuery is already loaded
+ * Reminder: Use (and do all your DOM work in) jQuery's document ready function */
 $(document).ready(function(){
 
   // Test / driver code (temporary). Eventually will get this from the server.
@@ -29,15 +29,14 @@ $(document).ready(function(){
       }
     ]
     
-  /* loop through tweets, calls createTweetElement for each tweet, take the return value and append it to the tweets container
-     grab the formatted return tweets HTML from our createTweetElement() function, update $tweetCollection to scoop up all of the HTML the loop returns
-     then append .incoming-tweets to add that HTML on the end */
+  /* loop through tweets, calls createTweetElement() for each tweet, take the return value & append it to the tweets container
+   * grab the formatted return tweets HTML from our createTweetElement() function, update $tweetCollection to scoop up all of the HTML the loop returns
+   * then append .incoming-tweets to add that HTML on the end */
   const renderTweets = function(tweets) {
 
     for (const tweet of tweets) {
       const singleTweet = createTweetElement(tweet);
-      console.log(singleTweet);
-      $('.incoming-tweets').append($(singleTweet));
+      $('.incoming-tweets').prepend($(singleTweet));
     }
   }
       
@@ -47,6 +46,7 @@ $(document).ready(function(){
 
     let $tweet = $("<article>").addClass("single-tweet");
     const createdAt = tweetObject.created_at;
+    const date = moment(createdAt).fromNow()
     const name = tweetObject.user.name;
     const avatar = tweetObject.user.avatars;
     const handle = tweetObject.user.handle;
@@ -69,7 +69,7 @@ $(document).ready(function(){
       </div>
       <div class="tweet-footer">
         <div class="timestamp">
-          <p>${createdAt}</p>
+          <p>${date}</p>
         </div>
         <div class="footer-icons">
           <i class="fas fa-flag"></i>

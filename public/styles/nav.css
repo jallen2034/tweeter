@@ -1,5 +1,6 @@
 nav {
   display: flex;
+  position: fixed; /* Set the navbar to fixed position */
   justify-content: space-between;
   background-color:#4056A1 ;
   width: 100vw;

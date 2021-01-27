@@ -1,29 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Meta Information -->
-    <title>Tweeter - Home Page</title>
 
-    <!-- External CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" type="text/css" />
+<head>
+  <!--Fonts ye-->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:wght@300;600&display=swap"
+    rel="stylesheet">
 
-    <!-- App CSS -->
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <!-- Meta Information -->
+  <title>Tweeter - Home Page</title>
 
-    <!-- External JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- External CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    type="text/css" />
 
-    <!-- App JS -->
-    <script type="text/javascript" src="/scripts/client.js"></script>
-  </head>
+  <!-- App CSS -->
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
-  <body>
-    <!-- Top nav bar (fixed) -->
-    <nav>
-      <span>tweeter</span>
-    </nav>
+  <!-- Nav CSS-->
+  <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
 
+  <!-- Header CSS-->
+  <link rel="stylesheet" href="/styles/header.css" type="text/css" />
+
+  <!-- form CSS-->
+  <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
+
+  <!-- External JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <!-- App JS -->
+  <script type="text/javascript" src="/scripts/client.js"></script>
+
+  <!-- Char counter JS -->
+  <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
+
+</head>
+
+<body>
+  <!-- Top nav bar (fixed) -->
+  <nav>
+    <span>tweeter</span>
+    <div>
+      <b>Write </b>A new tweet
+    </div>
+  </nav>
+
+  <header>
+    <div id="profile-image">
+      <img src="/images/profile-hex.png">
+    </div>
+    <br>
+    <div id="profile-name">
+      <h2>bocajbee</h2>
+    </div>
+  </header>
+
+  <main>
     <!-- Page-specific (main) content here -->
-    <main class="container"></main>
-  </body>
+    <section class="new-tweet">
+      <form action="/tweets/" method="POST">
+        <div class="hum">
+          <label class="what-are-hum" for="tweet-text"><b>What are you humming about?</b></label>
+          <textarea class="tweet-text" name="text" id="tweet-text"></textarea>
+        </div>
+        <!--div is the flex container-->
+        <div class="submit">
+          <button type="submit">Tweet</button>
+          <output class="counter" name="counter" for="tweet-text">140</output>
+        </div>
+      </form>
+    </section>
+  </main>
+</body>
+
 </html>

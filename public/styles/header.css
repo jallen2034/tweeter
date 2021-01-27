@@ -1,0 +1,28 @@
+header {
+  height: 400px;
+  background-color: #eca24d;
+  background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-dark.png");
+  width: 100%;
+}
+
+#profile-image {
+  padding-top: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#profile-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+textarea {
+  resize: none;
+  height: 44px;
+  margin-top: 1%;
+}
+
+

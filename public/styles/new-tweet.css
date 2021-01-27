@@ -1,0 +1,66 @@
+form {
+  background-color: transparent
+}
+
+.hum {
+  display: flex;
+  flex-direction: column;
+  color: rgb(77, 77, 77);
+  margin-left: 4%;
+  margin-right: 4%;
+}
+
+.submit {
+  display: flex;
+  margin-left: 4%;
+  margin-right: 4%;
+  padding-bottom: 2%;
+}
+
+button {
+  background-color: #4152a1;
+  color: white;
+  font-family: 'Bungee', cursive;
+}
+
+.new-tweet {
+  padding: 1.5rem;
+  width: 100%
+}
+
+.what-are-hum {
+  padding-top: 15px;
+  padding-bottom: 5px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.tweet-text {
+  padding-top: 8px;
+  padding-bottom: 5px;
+  padding-left: 30px;
+  padding-right: 30px;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  background-color: transparent;
+  border-bottom: 3px solid rgb(83, 83, 83);
+  margin-bottom: 20px;
+}
+
+.tweet-text:focus {
+  outline: none;
+}
+
+/* entire flex container containing the submit button and counter */
+div.submit {
+  background-color: transparent;
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Bungee', cursive;
+  color: rgb(77, 77, 77);
+}
+
+.red {
+  color: rgb(209, 12, 12);
+}

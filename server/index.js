@@ -1,11 +1,10 @@
 "use strict";
 
 // Basic express setup:
-
-const PORT          = 8080;
-const express       = require("express");
-const bodyParser    = require("body-parser");
-const app           = express();
+const PORT = 8080;
+const express = require("express");
+const bodyParser = require("body-parser");
+const app = express(); // this sets up our web server and storing that in app var
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
@@ -25,7 +24,7 @@ const DataHelpers = require("./lib/data-helpers.js")(db);
 // Update the dates for the initial tweets (data-files/initial-tweets.json).
 require("./lib/date-adjust")();
 
-// The `tweets-routes` module works similarly: we pass it the `DataHelpers` object
+// The tweets-routes` module works similarly: we pass it the `DataHelpers` object
 // so it can define routes that use it to interact with the data layer.
 const tweetsRoutes = require("./routes/tweets")(DataHelpers);
 

@@ -6,7 +6,7 @@ header {
 }
 
 #profile-image {
-  padding-top: 25px;
+  padding-top: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,7 +14,8 @@ header {
 
 #profile-name {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
   color: white;
 }
@@ -25,4 +26,7 @@ textarea {
   margin-top: 1%;
 }
 
+h2.profile-text {
+  margin-top: 5px;
+}
 

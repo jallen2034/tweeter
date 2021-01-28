@@ -1,7 +1,7 @@
 
 /* loop through tweets, calls createTweetElement() for each tweet, take the return value & append it to the tweets container
-  * grab the formatted return tweets HTML from our createTweetElement() function, update $tweetCollection to scoop up all of the HTML the loop returns
-  * then append .incoming-tweets to add that HTML on the end */
+ * grab the formatted return tweets HTML from our createTweetElement() function, update $tweetCollection to scoop up all of the HTML the loop returns
+ * then append .incoming-tweets to add that HTML on the end */
 const renderTweets = function(tweets) {
 
   for (const tweet of tweets) {
@@ -18,7 +18,7 @@ const loadtweets = function() {
   });
 }
 
-// escape function that takes in a string 
+// this function converts <script> tags into &lt, making a XSS attack impossible
 // https://developer.mozilla.org/en-US/docs/Web/API/Document/createTextNode
 const escape = function(str) {
   let div = document.createElement('div');
@@ -27,9 +27,9 @@ const escape = function(str) {
 }
 
 /* function to perform ajax call to submit new tweet to the server, it does this by grabbing the text inside the user-form
-  * it then takes that plaintext, seralizes it as JSON, then sends it to our server via ajax to handle 
-  * we also have a check to ensure the value in the seralized text is not empty and not over 140 chars
-  * call load tweets to update the new tweet after we submit it */
+ * it then takes that plaintext, seralizes it as JSON, then sends it to our server via ajax to handle 
+ * we also have a check to ensure the value in the seralized text is not empty and not over 140 chars
+ * call load tweets to update the new tweet after we submit it */
 const sendTweet = function() {
   $('#user-form').on('submit', function(event){
     event.preventDefault();
@@ -55,8 +55,8 @@ const sendTweet = function() {
 }
     
 /* function that is passed in each object of the data array of objects as an incoming paramater
-   this function generates a new HTML template with the tweet info in it to return to where needed
-   we also scrub the incoming HTML the server sends back to the client and it surrounds the html in <p> tags to prevent an XSS attack */
+ * this function generates a new HTML template with the tweet info in it to return to where needed
+ * we also scrub the incoming HTML the server sends back to the client and it surrounds the html in <p> tags to prevent an XSS attack */
 const createTweetElement = (tweetObject) => {
   let $tweet = $("<article>").addClass("single-tweet");
   const createdAt = tweetObject.created_at;
@@ -65,7 +65,8 @@ const createTweetElement = (tweetObject) => {
   const avatar = tweetObject.user.avatars;
   const handle = tweetObject.user.handle;
   const content = tweetObject.content.text;
-  const safeHTML = `<p>${escape(content)}</p>`;
+  const safeHTML = `${escape(content)}`;
+  console.log("safeHTML", safeHTML)
 
   let html = 
   `<article class="single-tweet">

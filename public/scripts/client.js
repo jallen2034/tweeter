@@ -14,17 +14,42 @@ $(document).ready(function(){
     }
   }
 
+  // function to send ajax request from our client to the server
   const loadtweets = function() {
-
-    // send ajax request from our client to the server
     $.ajax({ method: 'GET', url: '/tweets'})
     .then(function (allTweetsJson) {
       renderTweets(allTweetsJson);
     });
   }
+
+  /* function to perform ajax call to submit new tweet to the server, it does this by grabbing the text inside the user-form
+   * it then takes that plaintext, seralizes it as JSON, then sends it to our server via ajax to handle 
+   * we also have a check to ensure the value in the seralized text is not empty and not over 140 chars */
+  const sendTweet = function() {
+    $('#user-form').on('submit', function(event){
       
-  /* pass in each object of the data array of objects into here as an incoming paramater
-     generate empty article HTMl template for tweet */
+      event.preventDefault();
+      const seralizedData = $(this).serialize();
+      const valToVerify = $('#tweet-text').val();
+      const valToVerifyLen = valToVerify.length;
+
+      if (!valToVerify) {
+        alert("Sorry, input field cannot be empty, try again");
+        return;
+      } else if (valToVerifyLen > 140) {
+        alert("Sorry too long, try again");
+        return;
+      }
+
+      $.ajax({ method: 'POST', url: '/tweets', data: seralizedData})
+      .then(function () {
+        console.log("Made it");
+      });
+    });
+  }
+      
+  /* function that is passed in each object of the data array of objects as an incoming paramater
+     this function generates a new HTML template with the tweet info in it to return to where needed */
   const createTweetElement = (tweetObject) => {
 
     let $tweet = $("<article>").addClass("single-tweet");
@@ -65,22 +90,9 @@ $(document).ready(function(){
     $tweet.append(html);
     return html;
   }
-  
-  // perform ajax call to submit new tweet to the server
-  $('#user-form').on('submit', function(event){
-    
-    // prevent default bahavior of event that fired off on form submit
-    event.preventDefault()
-    const seralizedData = $(this).serialize();
-    console.log("seralizedData: ", seralizedData);
 
-    // send ajax request from our client to the server
-    $.ajax({ method: 'POST', url: '/tweets', data: seralizedData})
-    .then(function () {
-      console.log("Made it");
-    });
-  });
-
+  // call functions containing ajax calls ot our server to send user tweets and get all tweets
+  sendTweet();
   loadtweets();
 });
 

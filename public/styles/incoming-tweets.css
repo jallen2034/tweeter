@@ -97,7 +97,6 @@ p.user-text {
 hr {
   border: none;
   height: 3px;
-  /* Set the hr color */
   color: rgb(56, 56, 56); /* old IE */
   background-color: rgb(73, 73, 73); /* Modern Browsers */
 }
@@ -117,5 +116,4 @@ hr {
 .fa-flag:before {
   padding: 3px;
 }
-
 

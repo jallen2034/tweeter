@@ -1,50 +1,52 @@
 
 /* loop through tweets, calls createTweetElement() for each tweet, take the return value & append it to the tweets container
- * grab the formatted return tweets HTML from our createTweetElement() function, update $tweetCollection to scoop up all of the HTML the loop returns
- * then append .incoming-tweets to add that HTML on the end */
+ * grab the formatted return tweets HTML from createTweetElement(), update $tweetCollection to 'scoop' up all of the HTML returned in loop
+ * then append .incoming-tweets to update that elements HTML with the tweets on the end */
 const renderTweets = function(tweets) {
 
   for (const tweet of tweets) {
     const singleTweet = createTweetElement(tweet);
     $('.incoming-tweets').prepend($(singleTweet));
   }
-}
+};
 
-// function to send ajax request from our client to the server
+// sends ajax request from our client to the server to GET and render tweets onto clients browser
 const loadtweets = function() {
   $.ajax({ method: 'GET', url: '/tweets'})
   .then(function (allTweetsJson) {
+    $('.incoming-tweets').empty();
     renderTweets(allTweetsJson);
   });
-}
+};
 
-// this function converts <script> tags into &lt, making a XSS attack impossible
-// https://developer.mozilla.org/en-US/docs/Web/API/Document/createTextNode
+/* converts <script> tags into '&lt', preventing a XSS attack
+ * https://developer.mozilla.org/en-US/docs/Web/API/Document/createTextNode */
 const escape = function(str) {
   let div = document.createElement('div');
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
-}
+};
 
-// https://stackoverflow.com/questions/10082330/dynamically-create-bootstrap-alerts-box-through-javascript
-// call the #alert_placeholder temp div and populate it with the boostrap banner
+/* https://stackoverflow.com/questions/10082330/dynamically-create-bootstrap-alerts-box-through-javascript
+ * call the #alert_placeholder temp div and populate it with the boostrap banner */
 fillAlert = function(error) {
-  $('#alert_placeholder').html('<div class="alert alert-danger" role="alert" style="position:abolute;z-index:999;">'+error+'</span> </div>')
-}
+  $('#alert_placeholder').html('<div class="alert alert-danger" role="alert" style="position:abolute;z-index:999;">' + error + '</span></div>');
+};
 
-// function that when called, will dismiss any alerts after 3 seconds
+/* when called, will dismiss any alerts after 3.7 seconds
+ * https://api.jquery.com/fadeTo, https://api.jquery.com/slideup, https://api.jquery.com/remove */
 dismissAlert = function() {
   window.setTimeout(function() {
     $(".alert").fadeTo(500, 0).slideUp(500, function(){
-        $(this).remove(); 
+        $(this).remove();
     });
-  }, 3500);
-}
+  }, 3700);
+};
 
-/* function to perform ajax call to submit new tweet to the server, it does this by grabbing the text inside the user-form
- * it then takes that plaintext, seralizes it as JSON, then sends it to our server via ajax to handle 
- * we also have a check to ensure the value in the seralized text is not empty and not over 140 chars
- * call load tweets to update the new tweet after we submit it */
+/* performs ajax call to submit new tweet to the server, does this by grabbing the text inside the user-form
+ * it takes that plaintext, seralizes it as JSON, sends it to our server via ajax to deal with
+ * also have a check to ensure the value in the seralized data is not empty & not > 140 chars
+ * call loadTweets() to update the new tweet after submission to server */
 const sendTweet = function() {
   $('#user-form').on('submit', function(event){
     event.preventDefault();
@@ -73,7 +75,7 @@ const sendTweet = function() {
 
     loadtweets();
   });
-}
+};
     
 /* function that is passed in each object of the data array of objects as an incoming paramater
  * this function generates a new HTML template with the tweet info in it to return to where needed
@@ -81,13 +83,12 @@ const sendTweet = function() {
 const createTweetElement = (tweetObject) => {
   let $tweet = $("<article>").addClass("single-tweet");
   const createdAt = tweetObject.created_at;
-  const date = moment(createdAt).fromNow()
+  const date = moment(createdAt).fromNow();
   const name = tweetObject.user.name;
   const avatar = tweetObject.user.avatars;
   const handle = tweetObject.user.handle;
   const content = tweetObject.content.text;
   const safeHTML = `${escape(content)}`;
-  console.log("safeHTML", safeHTML)
 
   let html = 
   `<article class="single-tweet">
@@ -118,7 +119,7 @@ const createTweetElement = (tweetObject) => {
 
   $tweet.append(html);
   return html;
-}
+};
 
 /* client-side JS logic goes here, jQuery is already loaded
  * reminder: Use (and do all your DOM work in) jQuery's document ready function 

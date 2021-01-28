@@ -1,3 +1,21 @@
+/* Write smartphone only styles here */
+@media only screen and (max-width: 420px) {
+
+}
+
+/* Laptops / Desktops: minimum width of 1024px */
+@media only screen and (min-width: 1024px) {
+  header {
+    height: 400px;
+    margin-top: 100px;
+    margin-right: 50px;
+    margin-left: 30px;
+    background-color: #eca24d;
+    background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-dark.png");
+    width: 100%;
+  }
+}
+
 header {
   height: 400px;
   margin-top: 100px;

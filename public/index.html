@@ -4,15 +4,15 @@
 <head>
   <!-- bootstrap Latest compiled and minified CSS -->
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" 
-  integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
   <!--Fonts ye-->
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:wght@300;600&display=swap"
     rel="stylesheet">
 
-  <!--fontawesome icons-->  
+  <!--fontawesome icons-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
 
   <!-- Meta Information -->
@@ -47,11 +47,12 @@
   <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
 
   <!-- Moments.js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+    integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+    crossorigin="anonymous"></script>
 </head>
 
-<body>  
+<body>
   <!-- Top nav bar (fixed) -->
   <nav>
     <span>tweeter</span>
@@ -59,35 +60,43 @@
       <b>Write </b>A new tweet
     </div>
   </nav>
-  <!-- Div that holds the temp notification -->
   <div id="alert_placeholder"></div>
-  <header>
-    <div id="profile-image">
-      <img src="/images/profile-hex.png">
-    </div>
-    <br>
-    <div id="profile-name">
-      <h2 class="profile-text">bocajbee</h2>
-    </div>
-  </header>
-  <main>
+  <div id="responsive-flex-container">
+    <!-- Div that holds the temp notification -->
+    <header>
+      <div id="profile-image">
+        <img src="/images/profile-hex.png">
+      </div>
+      <br>
+      <div id="profile-name">
+        <h2 class="profile-text">bocajbee</h2>
+      </div>
+    </header>
+
     <!-- Page-specific (main) content here -->
-    <section class="new-tweet">
-      <form id="user-form" action="/tweets/" method="POST">
-        <div class="hum">
-          <label class="what-are-hum" for="tweet-text"><b>What are you humming about?</b></label>
-          <textarea id="tweet-text" class="tweet-text" placeholder="What are you humming about" name="text"></textarea>
-        </div>
-        <!--div is the flex container-->
-        <div class="submit">
-          <button type="submit">Tweet</button>
-          <output class="counter" name="counter" for="tweet-text">140</output>
-        </div>
-      </form>
-    </section>
-    <!--incoming tweets go here-->
-    <section class="incoming-tweets">   
-    </section>
-  </main>
+    <main>
+
+      <section class="new-tweet">
+        <form id="user-form" action="/tweets/" method="POST">
+          <div class="hum">
+            <label class="what-are-hum" for="tweet-text"><b>What are you humming about?</b></label>
+            <textarea id="tweet-text" class="tweet-text" placeholder="What are you humming about"
+              name="text"></textarea>
+          </div>
+          <div class="submit">
+            <button type="submit">Tweet</button>
+            <output class="counter" name="counter" for="tweet-text">140</output>
+          </div>
+        </form>
+      </section>
+
+      <!--incoming tweets go here-->
+      <section class="incoming-tweets"></section>
+
+    </main>
+
+  </div>
+
 </body>
+
 </html>

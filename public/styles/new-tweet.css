@@ -1,3 +1,15 @@
+/* Write smartphone only styles here */
+@media only screen and (max-width: 420px) {
+  
+}
+
+/* Laptops / Desktops: minimum width of 1024px */
+@media only screen and (min-width: 1024px) {
+  
+}
+
+
+
 form {
   background-color: transparent
 }

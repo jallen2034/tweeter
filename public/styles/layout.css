@@ -3,6 +3,30 @@
  * https://css-tricks.com/international-box-sizing-awareness-day/
  * Do not modify these two selectors, please
  */
+
+/* Write smartphone only styles here */
+@media only screen and (max-width: 1023px) {
+  #responsive-flex-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+/* Laptops / Desktops: minimum width of 1024px */
+@media only screen and (min-width: 1024px) {
+  #responsive-flex-container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 160px
+    
+  }
+
+main {
+    margin-top: 50px;
+  }  
+}
+
 html {
   box-sizing: border-box;
 }
@@ -10,10 +34,7 @@ html {
   box-sizing: inherit;
 }
 
-/*
- * Global layout stuff
- */
-
+/* Global layout stuff */
 body {
   background-color: #f4f1ec;
   font-size: 24px;
@@ -24,9 +45,7 @@ nav span {
   font-family: 'Bungee', cursive;
 }
 
-/*
- * Additional CSS can be defined below or in other CSS files, as per instructions
- */
+/* Additional CSS can be defined below or in other CSS files, as per instructions */
 body, main {
   display: flex;
   flex-direction: column;

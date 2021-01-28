@@ -26,6 +26,21 @@ const escape = function(str) {
   return div.innerHTML;
 }
 
+// https://stackoverflow.com/questions/10082330/dynamically-create-bootstrap-alerts-box-through-javascript
+// call the #alert_placeholder temp div and populate it with the boostrap banner
+fillAlert = function(error) {
+  $('#alert_placeholder').html('<div class="alert alert-danger" role="alert" style="position:abolute;z-index:999;">'+error+'</span> </div>')
+}
+
+// function that when called, will dismiss any alerts after 3 seconds
+dismissAlert = function() {
+  window.setTimeout(function() {
+    $(".alert").fadeTo(500, 0).slideUp(500, function(){
+        $(this).remove(); 
+    });
+  }, 3000);
+}
+
 /* function to perform ajax call to submit new tweet to the server, it does this by grabbing the text inside the user-form
  * it then takes that plaintext, seralizes it as JSON, then sends it to our server via ajax to handle 
  * we also have a check to ensure the value in the seralized text is not empty and not over 140 chars
@@ -36,12 +51,18 @@ const sendTweet = function() {
     const seralizedData = ($('form').serialize());
     const valToVerify = $('#tweet-text').val();
     const valToVerifyLen = valToVerify.length;
+    const errors = {
+      empty: "Sorry the input field cannot be empty. Try again!",
+      tooLong: "Sorry your input too long. Try again!",
+    };
 
     if (!valToVerify) {
-      alert("Sorry, input field cannot be empty, try again");
+      fillAlert(errors.empty);
+      dismissAlert();
       return;
     } else if (valToVerifyLen > 140) {
-      alert("Sorry too long, try again");
+      fillAlert(errors.tooLong);
+      dismissAlert();
       return;
     }
 

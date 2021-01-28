@@ -38,7 +38,7 @@ dismissAlert = function() {
     $(".alert").fadeTo(500, 0).slideUp(500, function(){
         $(this).remove(); 
     });
-  }, 3000);
+  }, 3500);
 }
 
 /* function to perform ajax call to submit new tweet to the server, it does this by grabbing the text inside the user-form
@@ -53,7 +53,7 @@ const sendTweet = function() {
     const valToVerifyLen = valToVerify.length;
     const errors = {
       empty: "Sorry the input field cannot be empty. Try again!",
-      tooLong: "Sorry your input too long. Try again!",
+      tooLong: "Sorry your input is too long. Try again!",
     };
 
     if (!valToVerify) {

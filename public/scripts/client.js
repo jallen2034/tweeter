@@ -77,9 +77,9 @@ const sendTweet = function() {
     $.ajax({ method: 'POST', url: '/tweets', data: seralizedData})
     .then(function () {
       console.log("Made it");
+      $('#tweet-text').val('');
+      loadtweets();
     });
-
-    loadtweets();
   });
 };
     
@@ -87,12 +87,11 @@ const sendTweet = function() {
  * this function generates a new HTML template with the tweet info in it to return to where needed
  * we also scrub the incoming HTML the server sends back to the client and it surrounds the html in <p> tags to prevent an XSS attack */
 const createTweetElement = (tweetObject) => {
+  console.log(tweetObject);
   let $tweet = $("<article>").addClass("single-tweet");
   const createdAt = tweetObject.created_at;
   const date = moment(createdAt).fromNow();
-  const name = tweetObject.user.name;
-  const avatar = tweetObject.user.avatars;
-  const handle = tweetObject.user.handle;
+  const {avatars,name,handle} = tweetObject.user;
   const content = tweetObject.content.text;
   const safeHTML = `${escape(content)}`;
 
@@ -100,7 +99,7 @@ const createTweetElement = (tweetObject) => {
   `<article class="single-tweet">
     <div class="tweet-header">
       <div class="tweet-avatar">
-        <img src="${avatar}">
+        <img src="${avatars}">
         <p class="name">${name}</p>
       </div>
       <div class="header-handle">

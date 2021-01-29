@@ -43,7 +43,7 @@ fillAlert = function(error) {
  * https://api.jquery.com/fadeTo, https://api.jquery.com/slideup, https://api.jquery.com/remove */
 dismissAlert = function() {
   window.setTimeout(function() {
-    $(".alert").fadeTo(500, 0).slideUp(500, function(){
+    $(".alert").fadeTo(600, 0).slideUp(600, function(){
         $(this).remove();
     });
   }, 3000);

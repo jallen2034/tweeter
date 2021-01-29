@@ -13,10 +13,10 @@ const renderTweets = function(tweets) {
 // sends ajax request from our client to the server to GET and render tweets onto clients browser
 const loadtweets = function() {
   $.ajax({ method: 'GET', url: '/tweets'})
-  .then(function (allTweetsJson) {
-    $('.incoming-tweets').empty();
-    renderTweets(allTweetsJson);
-  });
+    .then(function(allTweetsJson) {
+      $('.incoming-tweets').empty();
+      renderTweets(allTweetsJson);
+    });
 };
 
 /* converts <script> tags into '&lt', preventing a XSS attack
@@ -43,8 +43,8 @@ fillAlert = function(error) {
  * https://api.jquery.com/fadeTo, https://api.jquery.com/slideup, https://api.jquery.com/remove */
 dismissAlert = function() {
   window.setTimeout(function() {
-    $(".alert").fadeTo(600, 0).slideUp(600, function(){
-        $(this).remove();
+    $(".alert").fadeTo(600, 0).slideUp(600, function() {
+      $(this).remove();
     });
   }, 3000);
 };
@@ -54,7 +54,7 @@ dismissAlert = function() {
  * also have a check to ensure the value in the seralized data is not empty & not > 140 chars
  * call loadTweets() to update the new tweet after submission to server */
 const sendTweet = function() {
-  $('#user-form').on('submit', function(event){
+  $('#user-form').on('submit', function(event) {
     event.preventDefault();
     const seralizedData = ($('form').serialize());
     const valToVerify = $('#tweet-text').val();
@@ -75,11 +75,11 @@ const sendTweet = function() {
     }
 
     $.ajax({ method: 'POST', url: '/tweets', data: seralizedData})
-    .then(function () {
-      console.log("Made it");
-      $('#tweet-text').val('');
-      loadtweets();
-    });
+      .then(function() {
+        console.log("Made it");
+        $('#tweet-text').val('');
+        loadtweets();
+      });
   });
 };
     
@@ -95,7 +95,7 @@ const createTweetElement = (tweetObject) => {
   const content = tweetObject.content.text;
   const safeHTML = `${escape(content)}`;
 
-  let html = 
+  let html =
   `<article class="single-tweet">
     <div class="tweet-header">
       <div class="tweet-avatar">
@@ -120,17 +120,16 @@ const createTweetElement = (tweetObject) => {
         <i class="fas fa-heart"></i>
       </div>
     </div>
-  </article>`
+  </article>`;
 
   $tweet.append(html);
   return html;
 };
 
 /* client-side JS logic goes here, jQuery is already loaded
- * reminder: Use (and do all your DOM work in) jQuery's document ready function 
+ * reminder: Use (and do all your DOM work in) jQuery's document ready function
  * call functions containing ajax calls ot our server to send user tweets and get all tweets*/
-$(document).ready(function(){
+$(document).ready(function() {
   sendTweet();
   loadtweets();
 });
-

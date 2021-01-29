@@ -22,7 +22,7 @@ Application on desktop:
 
 !["Application on desktop"](https://github.com/jallen2034/tweeter/blob/master/docs/1.png)
 
-Error handling on Desktop:
+Error handling on desktop:
 
 !["Error handling on Desktop"](https://github.com/jallen2034/tweeter/blob/master/docs/2.png)
 

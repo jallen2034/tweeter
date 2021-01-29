@@ -10,6 +10,11 @@ nav {
   color: white;
 }
 
+a:link, a:visited {
+  text-decoration: none;
+  color: white;
+}
+
 .alert {
   position: relative;
   border: 1px solid transparent;

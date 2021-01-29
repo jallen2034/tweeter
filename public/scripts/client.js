@@ -30,7 +30,13 @@ const escape = function(str) {
 /* https://stackoverflow.com/questions/10082330/dynamically-create-bootstrap-alerts-box-through-javascript
  * call the #alert_placeholder temp div and populate it with the boostrap banner */
 fillAlert = function(error) {
-  $('#alert_placeholder').html('<div class="alert alert-danger" role="alert" style="position:abolute;z-index:999;">' + error + '</span></div>');
+  console.log(window.innerWidth);
+
+  if (window.innerWidth >= 1024) {
+    $('#alert_placeholder').html('<div class="alert alert-danger" role="alert" style="position:abolute;z-index:999;">' + error + '</span></div>');
+  } else {
+    $('#alert_placeholder-mobile').html('<div class="alert alert-danger" role="alert">' + error + '</span></div>');
+  }
 };
 
 /* when called, will dismiss any alerts after 3.7 seconds
@@ -40,7 +46,7 @@ dismissAlert = function() {
     $(".alert").fadeTo(500, 0).slideUp(500, function(){
         $(this).remove();
     });
-  }, 3700);
+  }, 3000);
 };
 
 /* performs ajax call to submit new tweet to the server, does this by grabbing the text inside the user-form

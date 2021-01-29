@@ -1,35 +1,14 @@
-/*
- * http://www.paulirish.com/2012/box-sizing-border-box-ftw/
- * https://css-tricks.com/international-box-sizing-awareness-day/
- * Do not modify these two selectors, please
- */
-
-/* Write smartphone only styles here */
-@media only screen and (max-width: 1023px) {
-  #responsive-flex-container {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-  }
-}
-
-/* Laptops / Desktops: minimum width of 1024px */
-@media only screen and (min-width: 1024px) {
-  #responsive-flex-container {
-    display: flex;
-    flex-direction: row;
-    margin-top: 160px
-    
-  }
-
-main {
-    margin-top: 50px;
-  }  
+/*Mobile first!*/
+#responsive-flex-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 html {
   box-sizing: border-box;
 }
+
 *, *:before, *:after {
   box-sizing: inherit;
 }
@@ -59,5 +38,19 @@ main.container {
 
 #tweets-container {
   width: 100%;
+}
+
+/* Laptops / Desktops: minimum width of 1024px */
+@media only screen and (min-width: 1024px) {
+  #responsive-flex-container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 160px;
+    width: 90%;
+  }
+
+  main {
+    margin-top: 50px;
+  }  
 }
 

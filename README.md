@@ -15,3 +15,11 @@ This repository is the starter code for the project: Students will fork and clon
 
 - Express
 - Node 5.10.x or above
+
+## Screenshots
+
+!["Application on desktop"](https://github.com/jallen2034/tweeter/blob/master/docs/1.png)
+!["Error handling on Desktop"](https://github.com/jallen2034/tweeter/blob/master/docs/1.png)
+!["Adding a tweet"](https://github.com/jallen2034/tweeter/blob/master/docs/3.png)
+!["On smaller displays"](https://github.com/jallen2034/tweeter/blob/master/docs/5.png)
+!["Error handling on smaller displays"](https://github.com/jallen2034/tweeter/blob/master/docs/4.png)

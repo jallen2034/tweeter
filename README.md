@@ -37,3 +37,9 @@ On smaller displays:
 Error handling on smaller displays:
 
 !["Error handling on smaller displays"](https://github.com/jallen2034/tweeter/blob/master/docs/4.png)
+
+## Videos
+
+https://streamable.com/mr7mr6
+
+https://streamable.com/arn19t

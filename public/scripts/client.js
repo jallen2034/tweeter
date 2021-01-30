@@ -133,3 +133,9 @@ $(document).ready(function() {
   sendTweet();
   loadtweets();
 });
+
+// change color of navbar in mobile mode when scrolled down
+window.onscroll = () => {
+  const nav = document.querySelector('#navbar');
+  if(this.scrollY <= 10) nav.className = ''; else nav.className = 'scroll';
+};

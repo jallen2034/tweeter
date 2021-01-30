@@ -8,6 +8,7 @@ nav {
   height: 120px;
   padding: 1.7em;
   color: white;
+  transition: background-color 0.4s ease-out;
 }
 
 a:link, a:visited {
@@ -23,7 +24,12 @@ a:link, a:visited {
   align-items: center;
   left: 0;
   right: 0;
-}  
+}
+
+nav.scroll {
+  background-color: #4056A1;
+  color: #eef;
+}
 
 /* Write desktop only styles here */
 @media only screen and (min-width: 1024px) {

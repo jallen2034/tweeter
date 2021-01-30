@@ -54,7 +54,7 @@
 
 <body>
   <!-- Top nav bar (fixed) -->
-  <nav>
+  <nav id = "navbar">
     <span>tweeter</span>
     <div>
       <a href="#tweet-text"><b>Write </b>A new tweet</a>
@@ -81,8 +81,7 @@
         <form id="user-form" action="/tweets/" method="POST">
           <div class="hum">
             <label class="what-are-hum" for="tweet-text"><b>What are you humming about?</b></label>
-            <textarea id="tweet-text" class="tweet-text" placeholder="What are you humming about"
-              name="text"></textarea>
+            <textarea id="tweet-text" class="tweet-text" placeholder="What are you humming about" name="text"></textarea>
           </div>
           <div class="submit">
             <button type="submit">Tweet</button>

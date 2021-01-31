@@ -11,7 +11,7 @@ const renderTweets = function(tweets) {
 };
 
 // sends ajax request from our client to the server to GET and render tweets onto clients browser
-const loadtweets = function() {
+const loadTweets = function() {
   $.ajax({ method: 'GET', url: '/tweets'})
     .then(function(allTweetsJson) {
       $('.incoming-tweets').empty();
@@ -30,7 +30,6 @@ const escape = function(str) {
 /* https://stackoverflow.com/questions/10082330/dynamically-create-bootstrap-alerts-box-through-javascript
  * call the #alert_placeholder temp div and populate it with the boostrap banner */
 fillAlert = function(error) {
-  console.log(window.innerWidth);
 
   if (window.innerWidth >= 1024) {
     $('#alert_placeholder').html('<div class="alert alert-danger" role="alert" style="position:abolute;z-index:999;">' + error + '</span></div>');
@@ -76,9 +75,8 @@ const sendTweet = function() {
 
     $.ajax({ method: 'POST', url: '/tweets', data: seralizedData})
       .then(function() {
-        console.log("Made it");
         $('#tweet-text').val('');
-        loadtweets();
+        loadTweets();
       });
   });
 };
@@ -87,13 +85,12 @@ const sendTweet = function() {
  * this function generates a new HTML template with the tweet info in it to return to where needed
  * we also scrub the incoming HTML the server sends back to the client and it surrounds the html in <p> tags to prevent an XSS attack */
 const createTweetElement = (tweetObject) => {
-  console.log(tweetObject);
   let $tweet = $("<article>").addClass("single-tweet");
   const createdAt = tweetObject.created_at;
   const date = moment(createdAt).fromNow();
-  const {avatars,name,handle} = tweetObject.user;
+  const {avatars, name, handle} = tweetObject.user;
   const content = tweetObject.content.text;
-  const safeHTML = `${escape(content)}`;
+  const safeHtml = `${escape(content)}`;
 
   let html =
   `<article class="single-tweet">
@@ -107,7 +104,7 @@ const createTweetElement = (tweetObject) => {
       </div>
     </div>
     <div class="tweet-body-text">
-      <p class ="user-text">${safeHTML}</p>
+      <p class ="user-text">${safeHtml}</p>
       <hr>
     </div>
     <div class="tweet-footer">
@@ -131,11 +128,11 @@ const createTweetElement = (tweetObject) => {
  * call functions containing ajax calls ot our server to send user tweets and get all tweets*/
 $(document).ready(function() {
   sendTweet();
-  loadtweets();
+  loadTweets();
 });
 
 // change color of navbar in mobile mode when scrolled down
 window.onscroll = () => {
   const nav = document.querySelector('#navbar');
-  if(this.scrollY <= 10) nav.className = ''; else nav.className = 'scroll';
+  if (this.scrollY <= 10) nav.className = ''; else nav.className = 'scroll';
 };

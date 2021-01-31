@@ -2,7 +2,7 @@
 
 Tweeter is a simple, single-page Twitter clone built to practice my HTML, CSS, JS, jQuery and AJAX front-end skills, and my Node, Express and MongoDB back-end skills.
 
-Additonal features include auto dismissing bootstrap alerts on both desktop and mobile and a completely responsive design.
+Additonal features include auto dismissing bootstrap alerts for error handling on both desktop and mobile and a completely responsive design.
 
 ## Getting Started
 

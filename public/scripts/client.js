@@ -32,9 +32,9 @@ const escape = function(str) {
 fillAlert = function(error) {
 
   if (window.innerWidth >= 1024) {
-    $('#alert_placeholder').html('<div class="alert alert-danger" role="alert" style="position:abolute;z-index:999;">' + error + '</span></div>');
+    $('#alert_placeholder').html('<div class="alert alert-danger" role="alert" style="position:abolute;z-index:999;">' + error + '</div>');
   } else {
-    $('#alert_placeholder-mobile').html('<div class="alert alert-danger" role="alert">' + error + '</span></div>');
+    $('#alert_placeholder-mobile').html('<div class="alert alert-danger" role="alert">' + error + '</div>');
   }
 };
 
